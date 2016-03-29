@@ -12,12 +12,29 @@
  <context:annotation-config/>
  <!-- context:component-scan is used to make use of @Controller @RequestMapping etc. -->
 	<context:component-scan base-package="com.example.*" />
-	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven />
  <bean id="indexService" class="com.example.service.impl.IndexService"/>
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
 	</bean>
+ 
+ 
+ <bean id="velocityConfig"
+      class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+      <property name="resourceLoaderPath">
+          <value>/WEB-INF/vm</value>
+      </property>
+  </bean>
+ <!-- velocity view resolver --> 
+  <bean id="velocityViewResolver"
+      class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+      <property name="cache" value="true" />
+      <property name="prefix" value="/WEB-INF/vm/" />
+      <!-- <property name="layoutUrl" value="/WEB-INF/vm/layouts/layout.vm" /> -->
+      <property name="suffix" value=".vm" />
+      <property name="order" value="1" />
+  </bean>
  
 </beans>

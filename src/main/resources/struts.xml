@@ -4,6 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+<constant name="struts.action.excludePattern" value="/newp2p/.*"/>
 <package name="test" namespace="/" extends="struts-default">
 <action name="firstTest" method="index" class="com.example.controller.IndexAction">
 <result name="success">WEB-INF/jsp/hello.jsp</result>
