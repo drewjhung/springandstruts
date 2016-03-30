@@ -14,27 +14,35 @@
 	<context:component-scan base-package="com.example.*" />
 	<mvc:annotation-driven />
  <bean id="indexService" class="com.example.service.impl.IndexService"/>
+ 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewNames" value="*.jsp" />
 		<property name="prefix" value="/WEB-INF/jsp/"/>
-		<property name="suffix" value=".jsp" />
-		<property name="order" value="2" />
+		<property name="suffix" value="" />
+		<property name="order" value="0" />
 	</bean>
  
  
  <bean id="velocityConfig"
       class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-      <property name="resourceLoaderPath">
-          <value>/WEB-INF/vm</value>
-      </property>
+      <!-- <property name="configLocation" value="/WEB-INF/vm/velocity.properties"/> -->
+      <property name="velocityProperties">
+<props>
+<prop key="input.encoding">UTF-8</prop>
+<prop key="output.encoding">UTF-8</prop>
+</props>
+</property>
+      <property name="resourceLoaderPath" value="/WEB-INF/vm"/>
   </bean>
  <!-- velocity view resolver --> 
   <bean id="velocityViewResolver"
       class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+      <property name="viewNames" value="*.vm" />
       <property name="cache" value="true" />
-      <property name="prefix" value="/WEB-INF/vm/" />
-      <!-- <property name="layoutUrl" value="/WEB-INF/vm/layouts/layout.vm" /> -->
-      <property name="suffix" value=".vm" />
+      <property name="layoutKey" value="layouts"/>
+      <property name="layoutUrl" value="newlayout/layout.vm" />
       <property name="order" value="1" />
+      <property name="contentType" value="text/html;charset=UTF-8" />
   </bean>
  
 </beans>

@@ -4,7 +4,7 @@
 </head>
 <body>
   <div>
-      #parse("layouts/_header.vm")
+      #parse("newlayout/_header.vm")
   </div>
   
   
@@ -17,7 +17,7 @@
   </div>
   
   <div>
-      #parse("layouts/_footer.vm")
+      #parse("newlayout/_footer.vm")
   </div>
 </body>
 </html>

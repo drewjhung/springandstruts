@@ -1,10 +1,11 @@
+#set($layouts = "/layouts/layout.vm" )
 <h1>Index</h1>
  
 <h2>Department list</h2>
+Cr.$creator
 <table border="1">
 <tr>
- <th>Dept No</th>
- <th>Dept Name</th>
+ <th>chris's album</th>
 </tr>
 #foreach($album in $allAlbums)
   <tr>

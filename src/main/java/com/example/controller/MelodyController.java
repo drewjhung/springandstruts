@@ -16,13 +16,14 @@ public class MelodyController {
 	@Autowired private IIndexService indexService;
 	@RequestMapping(value="sing", method = RequestMethod.GET)
 	public String singing(ModelMap model){
-		model.addAttribute("name", "R.Kelly");
-		return "hello";
+		model.addAttribute("name", "汤姆猫");
+		return "hello.jsp";
 	}
 	@RequestMapping(value="chris", method=RequestMethod.GET)
 	public String chrisBrown(Model model){
 		List<String> allAlbums = indexService.listAllAlbums();
 		model.addAttribute("allAlbums", allAlbums);
-		return "index";
+		model.addAttribute("creator", "汤姆猫");
+		return "index.vm";
 	}
 }
